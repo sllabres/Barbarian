@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barbarian.Win", "Barbarian.Win\Barbarian.Win.csproj", "{80564300-DD69-49BA-A527-0A2B0D072D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barbarian.Core", "Barbarian.Core\Barbarian.Core.csproj", "{18E1E033-D574-4D94-9449-394B456ADA26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80564300-DD69-49BA-A527-0A2B0D072D58}.Debug|x86.ActiveCfg = Debug|x86
+		{80564300-DD69-49BA-A527-0A2B0D072D58}.Debug|x86.Build.0 = Debug|x86
+		{80564300-DD69-49BA-A527-0A2B0D072D58}.Release|x86.ActiveCfg = Release|x86
+		{80564300-DD69-49BA-A527-0A2B0D072D58}.Release|x86.Build.0 = Release|x86
+		{0C080D38-C66B-437B-A566-783F3D0D6812}.Debug|x86.ActiveCfg = Debug|x86
+		{0C080D38-C66B-437B-A566-783F3D0D6812}.Release|x86.ActiveCfg = Release|x86
+		{18E1E033-D574-4D94-9449-394B456ADA26}.Debug|x86.ActiveCfg = Debug|x86
+		{18E1E033-D574-4D94-9449-394B456ADA26}.Debug|x86.Build.0 = Debug|x86
+		{18E1E033-D574-4D94-9449-394B456ADA26}.Release|x86.ActiveCfg = Release|x86
+		{18E1E033-D574-4D94-9449-394B456ADA26}.Release|x86.Build.0 = Release|x86
+		{18BFB926-0A81-4764-8E6D-B347C006F5DC}.Debug|x86.ActiveCfg = Debug|x86
+		{18BFB926-0A81-4764-8E6D-B347C006F5DC}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
