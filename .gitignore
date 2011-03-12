@@ -1,8 +1,12 @@
 
 /Barbarian.Core/obj
 /Barbarian.Core/bin
+/Barbarian.Core/Barbarian.Core.csproj.user
+/Barbarian.Core/Barbarian.Core.csproj.Debug.cachefile
 /Barbarian.Win/bin
 /Barbarian.Win/obj
 /Barbarian.Win/Content/obj
 /Barbarian.Win/Content/bin
+/Barbarian.Win/Barbarian.Win.csproj.user
+/Barbarian.Win/Barbarian.Win.csproj.Debug.cachefile
 /Barbarian.suo
