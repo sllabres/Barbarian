@@ -90,12 +90,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NestedContentProject Include="Content\Content.contentproj">
-      <Project>18bfb926-0a81-4764-8e6d-b347c006f5dc</Project>
-      <Visible>False</Visible>
-    </NestedContentProject>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework Client Profile</ProductName>
