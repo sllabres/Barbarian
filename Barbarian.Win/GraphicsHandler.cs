@@ -8,17 +8,20 @@ namespace Barbarian.Win
 {
     public class GraphicsHandler
     {
+        private AnimationHandler _animationHandler;
         private Texture2D _background;
         private IGameProxy _game;
         private SpriteBatch _spriteBatch;
         private GraphicsDevice GraphicsDevice { get { return _game.GraphicsDevice; } }
 
         public GraphicsHandler(IGameProxy gameProxy, IGraphicsDeviceManager graphicsDeviceManager)
-        {
+        {            
             _game = gameProxy;
             _game.LoadContentEvent += LoadContent;
             _game.DrawEvent += Draw;            
             ((GraphicsDeviceManager)graphicsDeviceManager).PreparingDeviceSettings += PreparingDeviceSettings;
+
+            _animationHandler = new AnimationHandler(gameProxy, graphicsDeviceManager);
         }
 
         private void PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)

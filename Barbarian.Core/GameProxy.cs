@@ -8,11 +8,13 @@ using Microsoft.Xna.Framework.Input;
 namespace Barbarian.Core
 {
     public delegate void DrawDelegate(GameTime gameTime);
+    public delegate void UpdateDelegate(GameTime gameTime);
     public delegate void LoadContentDelegate();
-    public delegate void InitializeDelegate();
+    public delegate void InitializeDelegate();    
 
     public interface IGameProxy : IDisposable
     {
+        event UpdateDelegate UpdateEvent;
         event DrawDelegate DrawEvent;
         event LoadContentDelegate LoadContentEvent;
         event InitializeDelegate InitializeEvent;
@@ -26,6 +28,7 @@ namespace Barbarian.Core
     public class GameProxy : Game, IGameProxy
     {
         public event DrawDelegate DrawEvent;
+        public event UpdateDelegate UpdateEvent;
         public event LoadContentDelegate LoadContentEvent;
         public event InitializeDelegate InitializeEvent;
 
@@ -71,6 +74,7 @@ namespace Barbarian.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            UpdateEvent(gameTime);
             if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Escape))
                 this.Exit();
 

@@ -88,6 +88,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimationHandler.cs" />
+    <Compile Include="Animation\AnimatedTexture.cs" />
     <Compile Include="Animation\IDrawable.cs" />
     <Compile Include="Animation\WalkingAnimation.cs" />
     <Compile Include="GameHandler.cs" />

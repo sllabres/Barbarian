@@ -5,7 +5,7 @@ namespace Barbarian.Win
     public class GameHandler
     {
         private readonly IGameProxy _game;
-        private readonly GraphicsHandler _graphicsHandler;
+        private readonly GraphicsHandler _graphicsHandler;        
 
         public GameHandler(IGameProxy gameProxy, GraphicsHandler graphicsHandler)
         {
