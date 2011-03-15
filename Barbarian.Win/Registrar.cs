@@ -25,8 +25,7 @@ namespace Barbarian.Win
             
             Scan(s =>
             {
-                s.TheCallingAssembly();
-                s.AddAllTypesOf<IDrawable>();
+                s.TheCallingAssembly();                
             });            
         }
     }

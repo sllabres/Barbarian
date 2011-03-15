@@ -8,32 +8,37 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Barbarian.Win.Animation
 {
-    public class AnimatedTexture
+    public struct AssetValues
     {
-        private int _framecount;
-        public Texture2D _texture;
-        private float _timePerFrame;
-        private int _frame;
-        private float _totalElapsed;
-        private bool _isPaused;
-        public float Rotation, Scale, Depth;
-        public Vector2 Origin;
+        public Vector2 Origin { get; set; }
+        public float Rotation { get; set; }
+        public float Scale { get; set; }
+        public float Depth { get; set; }
+        public string ContentName { get; set; }
+        public int FrameCount { get; set; }
+        public int FramesPerSecond { get; set; }
+        public float TimePerFrame { get; set; }
+    }
 
-        public AnimatedTexture(Vector2 origin, float rotation,
-            float scale, float depth)
+    public class AnimatedTexture
+    {        
+        public Texture2D _texture;        
+        private int _currentFrame;
+        private float _totalElapsed;
+        private bool _isPaused;                
+        private AssetValues _assetValues;
+        private readonly float _timePerFrame;
+
+        public AnimatedTexture(AssetValues assetValues)
         {
-            this.Origin = origin;
-            this.Rotation = rotation;
-            this.Scale = scale;
-            this.Depth = depth;
+            _assetValues = assetValues;
+            _timePerFrame = (float)1 / _assetValues.FrameCount;
         }
-        public void Load(ContentManager content, string asset,
-            int frameCount, int framesPerSec)
-        {
-            _framecount = frameCount;
-            _texture = content.Load<Texture2D>(asset);
-            _timePerFrame = (float)1 / framesPerSec;
-            _frame = 0;
+
+        public void Load(ContentManager content)
+        {            
+            _texture = content.Load<Texture2D>(_assetValues.ContentName);            
+            _currentFrame = 0;
             _totalElapsed = 0;
             _isPaused = false;
         }
@@ -43,28 +48,30 @@ namespace Barbarian.Win.Animation
         {
             if (_isPaused)
                 return;
+
             _totalElapsed += elapsed;
+
             if (_totalElapsed > _timePerFrame)
             {
-                _frame++;
+                _currentFrame++;
                 // Keep the Frame between 0 and the total frames, minus one.
-                _frame = _frame % _framecount;
+                _currentFrame = _currentFrame % _assetValues.FrameCount;
                 _totalElapsed -= _timePerFrame;
             }
         }
 
         // class AnimatedTexture
-        public void DrawFrame(SpriteBatch batch, Vector2 screenPos)
+        public void DrawFrame(SpriteBatch batch, Vector2 position)
         {
-            DrawFrame(batch, _frame, screenPos);
+            DrawFrame(batch, _currentFrame, position);
         }
-        public void DrawFrame(SpriteBatch batch, int frame, Vector2 screenPos)
+
+        public void DrawFrame(SpriteBatch batch, int frame, Vector2 position)
         {
-            int FrameWidth = _texture.Width / _framecount;
-            Rectangle sourcerect = new Rectangle(FrameWidth * frame, 0,
-                FrameWidth, _texture.Height);
-            batch.Draw(_texture, screenPos, sourcerect, Color.White,
-                Rotation, Origin, Scale, SpriteEffects.None, Depth);
+            int FrameWidth = _texture.Width / _assetValues.FrameCount;
+
+            Rectangle sourcerect = new Rectangle(FrameWidth * frame, 0, FrameWidth, _texture.Height);
+            batch.Draw(_texture, position, sourcerect, Color.White, _assetValues.Rotation, new Vector2 { X = 0, Y = 0 }, _assetValues.Scale, SpriteEffects.None, _assetValues.Depth);
         }
 
         public bool IsPaused
@@ -74,7 +81,7 @@ namespace Barbarian.Win.Animation
         
         public void Reset()
         {
-            _frame = 0;
+            _currentFrame = 0;
             _totalElapsed = 0f;
         }
                 

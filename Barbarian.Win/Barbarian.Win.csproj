@@ -92,6 +92,7 @@
     <Compile Include="Animation\AnimatedTexture.cs" />
     <Compile Include="Animation\IDrawable.cs" />
     <Compile Include="Animation\WalkingAnimation.cs" />
+    <Compile Include="Barbarian.cs" />
     <Compile Include="GameHandler.cs" />
     <Compile Include="GraphicsHandler.cs" />
     <Compile Include="Program.cs" />
