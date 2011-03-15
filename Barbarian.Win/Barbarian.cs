@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Barbarian.Core;
 using Barbarian.Win.Animation;
 using StructureMap;
+using Microsoft.Xna.Framework.Input;
 
 namespace Barbarian.Win
 {
@@ -17,7 +19,7 @@ namespace Barbarian.Win
     public interface IUpdateable
     {
         void Update(GameTime gameTime);
-    }
+    }    
 
     public class Barbarian : IDrawable, IUpdateable
     {
@@ -41,7 +43,7 @@ namespace Barbarian.Win
                 });
 
             ObjectFactory.Inject<IDrawable>(this);
-            ObjectFactory.Inject<IUpdateable>(this);
+            ObjectFactory.Inject<IUpdateable>(this);            
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -56,6 +58,13 @@ namespace Barbarian.Win
 
         public void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Right))
+                _currentPosition.X++;
+
+            if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Left))
+                _currentPosition.X--;               
+
+
             _walkingTexture.UpdateFrame((float)gameTime.ElapsedGameTime.TotalSeconds);
         }
     }

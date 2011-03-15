@@ -11,7 +11,6 @@ namespace Barbarian.Win
 
         public GameHandler(IGameProxy gameProxy, GraphicsHandler graphicsHandler, Barbarian barbarian)
         {
-
             _graphicsHandler = graphicsHandler;
             _game = gameProxy;
             _game.Window.Title = "Barbarian";            
@@ -22,7 +21,6 @@ namespace Barbarian.Win
 
         private void Initialize()
         {
-
         }        
 
         public void Start()
