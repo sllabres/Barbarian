@@ -59,13 +59,16 @@ namespace Barbarian.Win
         public void Update(GameTime gameTime)
         {
             if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Right))
+            {
                 _currentPosition.X++;
+                _walkingTexture.UpdateFrame((float)gameTime.ElapsedGameTime.TotalSeconds);
+            }
 
             if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Left))
-                _currentPosition.X--;               
-
-
-            _walkingTexture.UpdateFrame((float)gameTime.ElapsedGameTime.TotalSeconds);
+            {
+                _currentPosition.X--;
+                _walkingTexture.UpdateFrame((float)gameTime.ElapsedGameTime.TotalSeconds);
+            }            
         }
     }
 }

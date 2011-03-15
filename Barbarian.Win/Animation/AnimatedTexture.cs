@@ -68,9 +68,9 @@ namespace Barbarian.Win.Animation
 
         public void DrawFrame(SpriteBatch batch, int frame, Vector2 position)
         {
-            int FrameWidth = _texture.Width / _assetValues.FrameCount;
+            int frameHeight = _texture.Height / _assetValues.FrameCount;
 
-            Rectangle sourcerect = new Rectangle(FrameWidth * frame, 0, FrameWidth, _texture.Height);
+            Rectangle sourcerect = new Rectangle(0, frameHeight * frame, _texture.Width, frameHeight);
             batch.Draw(_texture, position, sourcerect, Color.White, _assetValues.Rotation, new Vector2 { X = 0, Y = 0 }, _assetValues.Scale, SpriteEffects.None, _assetValues.Depth);
         }
 
