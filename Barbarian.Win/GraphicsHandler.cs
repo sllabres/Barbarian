@@ -31,6 +31,7 @@ namespace Barbarian.Win
             e.GraphicsDeviceInformation.PresentationParameters.BackBufferWidth = 384;
             e.GraphicsDeviceInformation.PresentationParameters.BackBufferHeight = 282;
             e.GraphicsDeviceInformation.PresentationParameters.IsFullScreen = false;
+            
         }
 
         private void LoadContent()
@@ -50,8 +51,8 @@ namespace Barbarian.Win
         {
             IEnumerable<AnimatedTexture> animatedTextures = ObjectFactory.GetAllInstances<AnimatedTexture>();
             
-            GraphicsDevice.Clear(Color.Black);
             _spriteBatch.Begin();
+            
             _spriteBatch.Draw(_background, new Vector2 { X = 0, Y = 0 }, Color.White);
 
             foreach (var drawable in _drawables)

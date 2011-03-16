@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Barbarian.Core;
 using Barbarian.Win.Animation;
+using Barbarian.Win.Enums;
 using StructureMap;
 using Microsoft.Xna.Framework.Input;
 
@@ -25,9 +26,11 @@ namespace Barbarian.Win
     {
         private AnimatedTexture _walkingTexture;
         private Vector2 _currentPosition;
+        private AnimationState _animationState;
 
         public Barbarian()
         {
+            _animationState = AnimationState.Idle;
             _currentPosition = new Vector2 { X = 70, Y = 160 };
 
             _walkingTexture = new AnimatedTexture
@@ -60,15 +63,15 @@ namespace Barbarian.Win
         {
             if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Right))
             {
-                _currentPosition.X++;
-                _walkingTexture.UpdateFrame((float)gameTime.ElapsedGameTime.TotalSeconds);
+                _currentPosition.X+=0.9f;                
             }
 
             if (Keyboard.GetState(PlayerIndex.One).GetPressedKeys().Contains(Keys.Left))
             {
-                _currentPosition.X--;
-                _walkingTexture.UpdateFrame((float)gameTime.ElapsedGameTime.TotalSeconds);
-            }            
+                _currentPosition.X-=0.9f;                
+            }
+
+            _walkingTexture.UpdateFrame((float)gameTime.ElapsedGameTime.TotalSeconds);
         }
     }
 }
